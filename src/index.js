@@ -62,7 +62,7 @@ fetch(`http://localhost:3000/countries`).then(response => response.json())
 .then(json => {
   json.forEach(country => {
     if (likedCountriesArray.includes(country.id)){
-      countryContainer.innerHTML += `<div class="country-flag"><h2 id="country-name">${country.name}</h2><img  width="200px" src="${country.flag}"></div><br>`
+      countryContainer.innerHTML += `<div class="country-flag"><h2 class="country-name">${country.name}</h2><img  width="200px" src="${country.flag}"></div>`
     }
   })
 })
@@ -96,7 +96,7 @@ mapLocation.addEventListener('click', event => {
     .then(json => {
       json.find(country => {
         if (country.id === countryId) {
-          countryContainer.innerHTML += `<div id="country-flag"><h1>${country.name}</h1><img  width="200px" src="${country.flag}"></div>`
+          countryContainer.innerHTML += `<div class="country-flag"><h2 class="country-name">${country.name}</h2><img  width="200px" src="${country.flag}"></div>`
        }
       })
     })
