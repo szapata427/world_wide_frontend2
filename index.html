@@ -2,6 +2,8 @@
 <html lang="en">
   <head>
       <title>World Wide</title>
+      <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+      <link rel="stylesheet" href="index.css">
       <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -15,8 +17,20 @@
       </style>
   </head>
 <body>
+  <nav class="navbar navbar-inverse" style="margin-bottom: 0px;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Mr.WorldWide</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">World Map</a></li>
+      <li><a href="#">Page 1</a></li>
+      <!-- <li><a href="#">Page 2</a></li>
+      <li><a href="#">Page 3</a></li> -->
+    </ul>
+  </div>
+</nav>
 
-    <h1>World Wide Ways</h1>
 
     <!-- <div id="myCarousel" class="carousel slide" data-ride="carousel"> -->
       <!-- Indicators -->
@@ -56,7 +70,10 @@
        let
     </div>
 
-    <script type="text/javascript" src="index.js" ></script>
+    <div class="container" id="liked-countries">
+    </div>
+
+    <script type="text/javascript" src="src/index.js" ></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFPPtZANXaxQ20FvNyMEV4pEaF9q0bUPE&callback=initMap"
         async defer></script>
 
