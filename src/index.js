@@ -2,6 +2,7 @@ const mapLocation = document.getElementById('map')
 const countryContainer = document.getElementById('liked-countries')
 
 
+
    function initMap(){
     let map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 33, lng: 65},
@@ -16,6 +17,7 @@ const countryContainer = document.getElementById('liked-countries')
         let image = {
           url: country.flag,
           // This marker is 20 pixels wide by 32 pixels high.
+
           size: new google.maps.Size(40, 30),
           origin: new google.maps.Point(0, 0),
            // The anchor for this image is the base of the flagpole at (0, 32).
@@ -26,23 +28,29 @@ const countryContainer = document.getElementById('liked-countries')
         let marker = new google.maps.Marker({
           position:{lat: country['location_lat'] ,lng: country['location_lng'] },
           map:map,
+          title: country["name"],
           //size: new google.maps.Size(2, 3),
           icon: image
         });
         let infoWindow = new google.maps.InfoWindow({
-          content: `<h4 style="color: red">${country["name"]}<h4>
+          content: `<div class="country-info"><h4 class="country-title">${country["name"]}<h4>
                    <p>Native Name: ${country["native_name"]}</p>
                    <p>Population: ${country["population"]}</p>
                    <p>Official Language: ${country["language"]}</p>
                    <p>Capital: ${country["capital"]}</p>
                    <p> Currency: ${country["currency_name"]} <span>${country["currency_symbol"]} </span> </p>
                    <a href="https://en.wikipedia.org/wiki/${country["native_name"]}"> More Info </a> <span><button data-id="${country["id"]}" id="like_btn" class="btn btn-primary"> Like </button></span>
-          `
+          </div>`
         })
          //console.log(country["latlng"][0])
         //Added Marker?
         marker.addListener('click', function() {
-          infoWindow.open(map, marker);})
+          infoWindow.open(map, marker);
+          // tried to get the parentelment, add a class and use css on the class
+          // let countryInfo = document.querySelector(".gm-style-iw").parentElement
+          // countryInfo.className += "map-country-info";
+        }
+        )
       }
     )
   })
@@ -62,7 +70,7 @@ fetch(`http://localhost:3000/countries`).then(response => response.json())
 .then(json => {
   json.forEach(country => {
     if (likedCountriesArray.includes(country.id)){
-      countryContainer.innerHTML += `<div class="country-flag"><h2 class="country-name">${country.name}</h2><img  width="200px" src="${country.flag}"></div>`
+      countryContainer.innerHTML += `<div class="country-flag"><h2 class="country-name">${country.name}</h2><img  width="200px" src="${country.flag}"> <button id="${country.id}" class="btn btn-danger">Delete</button> </div>`
     }
   })
 })
@@ -96,10 +104,35 @@ mapLocation.addEventListener('click', event => {
     .then(json => {
       json.find(country => {
         if (country.id === countryId) {
-          countryContainer.innerHTML += `<div class="country-flag"><h2 class="country-name">${country.name}</h2><img  width="200px" src="${country.flag}"></div>`
+          countryContainer.innerHTML += `<div class="country-flag"><h2 class="country-name">${country.name}</h2><img  width="200px" src="${country.flag}"> <button id="${country.id}" class="btn btn-danger">Delete</button> </div>`
        }
       })
     })
+
+  }
+})
+
+countryContainer.addEventListener('click', event => {
+  event.preventDefault()
+  // debugger
+let deletebutton = event.target.className
+
+    event.target.parentElement.remove()
+
+  if( deletebutton === "btn btn-danger"){
+    fetch(`http://localhost:3000/favorite_countries/delete`,
+      { method: "PATCH",
+      headers: {
+        'Content-type': 'application/json',
+        Accepts: 'application/json'
+      },
+      body: JSON.stringify({
+        user_id: 1,
+        country_id: event.target.id
+      })
+    })
+
+
 
   }
 })
