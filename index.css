@@ -53,6 +53,49 @@ body {
   background-color: orange;
 }
 
+.carousel-inner {
+  height: 1000px;
+}
+
+.caroimg {
+  max-height:1000px;
+  width: 100%;
+}
+
+.carousel-fade .carousel-inner .item {
+  opacity: 0;
+  transition-property: opacity;
+}
+
+.carousel-fade .carousel-inner .active {
+  opacity: 1;
+}
+
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+  opacity: 1;
+}
+
+.carousel-fade .carousel-control {
+  z-index: 2;
+}
+
+.tit {
+  font-size: 10em;
+  color: white;
+  text-align: center;
+  position: absolute;
+   top: 500px;
+   width: 100%;
+   z-index: 1;
+}
 /* .country-title {
 font-family: 'Open Sans Condensed', sans-serif;
 font-size: 22px;
