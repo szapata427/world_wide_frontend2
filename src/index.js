@@ -1,6 +1,6 @@
 const mapLocation = document.getElementById('map')
 const countryContainer = document.getElementById('liked-countries')
-
+let infoWindow;
 
 
    function initMap(){
@@ -32,20 +32,25 @@ const countryContainer = document.getElementById('liked-countries')
           //size: new google.maps.Size(2, 3),
           icon: image
         });
-        let infoWindow = new google.maps.InfoWindow({
-          content: `<div class="country-info"><h4 class="country-title">${country["name"]}<h4>
-                   <p>Native Name: ${country["native_name"]}</p>
-                   <p>Population: ${country["population"]}</p>
-                   <p>Official Language: ${country["language"]}</p>
-                   <p>Capital: ${country["capital"]}</p>
-                   <p> Currency: ${country["currency_name"]} <span>${country["currency_symbol"]} </span> </p>
-                   <a href="https://en.wikipedia.org/wiki/${country["native_name"]}"> More Info </a> <span><button data-id="${country["id"]}" id="like_btn" class="btn btn-primary"> Like </button></span>
-          </div>`
-        })
+        //Opening info window
+
          //console.log(country["latlng"][0])
         //Added Marker?
-        marker.addListener('click', function() {
+        marker.addListener('mouseover', function(event) {
+          if (infoWindow) infoWindow.close();
+          infoWindow = new google.maps.InfoWindow({
+            content: `<div class="country-info"><h4 class="country-title">${country["name"]}<h4>
+                     <p>Native Name: ${country["native_name"]}</p>
+                     <p>Population: ${country["population"]}</p>
+                     <p>Official Language: ${country["language"]}</p>
+                     <p>Capital: ${country["capital"]}</p>
+                     <p> Currency: ${country["currency_name"]} <span>${country["currency_symbol"]} </span> </p>
+                     <a href="https://en.wikipedia.org/wiki/${country["native_name"]}"> More Info </a> <span><button data-id="${country["id"]}" id="like_btn" class="btn btn-primary"> Like </button></span>
+            </div>`
+          })
+
           infoWindow.open(map, marker);
+          // infoWindow
           // tried to get the parentelment, add a class and use css on the class
           // let countryInfo = document.querySelector(".gm-style-iw").parentElement
           // countryInfo.className += "map-country-info";
