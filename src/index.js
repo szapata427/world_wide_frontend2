@@ -49,12 +49,12 @@ let datalistOptions = document.querySelector('datalist[id="browsers"]')
     if (infoWindow) infoWindow.close();
     infoWindow = new google.maps.InfoWindow({
      content: `<div class="country-info"><h4 class="country-title">${country["name"]}<h4>
-          <p>Native Name: ${country["native_name"]}</p>
-          <p>Population: ${countryPopulation}</p>
-          <p>Official Language: ${country["language"]}</p>
-          <p>Capital: ${country["capital"]}</p>
-          <p> Currency: ${country["currency_name"]}</p>
-          <p> Currency Symbol: ${country["currency_symbol"]}</p>
+          <p><span class="info-object"> Native Name:</span> <span class="info-style">${country["native_name"]}</span></p>
+          <p><span class="info-object">Population:</span> <span class="info-style">${countryPopulation}</span></p>
+          <p><span class="info-object">Official Language:</span> <span class="info-style">${country["language"]}</span></p>
+          <p><span class="info-object">Capital:</span> <span class="info-style">${country["capital"]}</span></p>
+          <p><span class="info-object">Currency:</span> <span class="info-style">${country["currency_name"]}</span></p>
+          <p><span class="info-object">Currency Symbol:</span><span class="info-style">${country["currency_symbol"]}</span></p>
           <a href="https://en.wikipedia.org/wiki/${country["native_name"]}"> More Info </a> <span><button data-id="${country["id"]}" id="like_btn" class="btn btn-primary"> Like </button></span>
      </div>`
     })
