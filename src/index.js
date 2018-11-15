@@ -14,6 +14,7 @@ const countryContainer = document.getElementById('liked-countries')
       console.log(json)
 
       json.forEach(function(country){
+
         let image = {
           url: country.flag,
           // This marker is 20 pixels wide by 32 pixels high.
@@ -32,18 +33,25 @@ const countryContainer = document.getElementById('liked-countries')
           //size: new google.maps.Size(2, 3),
           icon: image
         });
+          // created a variable for population number to have commas
+          let countryPopulation = Number(parseFloat(country["population"]).toFixed(2)).toLocaleString('en', {
+          minimumFractionDigits: 0
+          });
+          // console.log(countryPopulation)
         let infoWindow = new google.maps.InfoWindow({
           content: `<div class="country-info"><h4 class="country-title">${country["name"]}<h4>
                    <p>Native Name: ${country["native_name"]}</p>
-                   <p>Population: ${country["population"]}</p>
+                   <p>Population: ${countryPopulation}</p>
                    <p>Official Language: ${country["language"]}</p>
                    <p>Capital: ${country["capital"]}</p>
-                   <p> Currency: ${country["currency_name"]} <span>${country["currency_symbol"]} </span> </p>
+                   <p> Currency: ${country["currency_name"]}</p>
+                   <p> Currency Symbol: ${country["currency_symbol"]}</p>
                    <a href="https://en.wikipedia.org/wiki/${country["native_name"]}"> More Info </a> <span><button data-id="${country["id"]}" id="like_btn" class="btn btn-primary"> Like </button></span>
           </div>`
         })
          //console.log(country["latlng"][0])
         //Added Marker?
+
         marker.addListener('click', function() {
           infoWindow.open(map, marker);
           // tried to get the parentelment, add a class and use css on the class
@@ -51,6 +59,7 @@ const countryContainer = document.getElementById('liked-countries')
           // countryInfo.className += "map-country-info";
         }
         )
+
       }
     )
   })
@@ -136,3 +145,84 @@ let deletebutton = event.target.className
 
   }
 })
+
+// langugage for each country in an array
+let languageArray = []
+// country for each currency in an array
+let currencyArray = []
+fetch(`http://localhost:3000/countries`).then(response => response.json())
+.then(json => {
+  json.forEach(country => {
+    languageArray.push(country.language)
+    currencyArray.push(country.currency_name)
+
+  })
+  return languageArray
+
+})
+
+
+// function to find the most common string in an array
+ function mostFreqStr(arr) {
+  var obj = {}, mostFreq = 0, which = [];
+
+  arr.forEach(ea => {
+    if (!obj[ea]) {
+      obj[ea] = 1;
+    } else {
+      obj[ea]++;
+    }
+
+    if (obj[ea] > mostFreq) {
+      mostFreq = obj[ea];
+      which = [ea];
+    } else if (obj[ea] === mostFreq) {
+      which.push(ea);
+    }
+  });
+
+  return which;
+}
+
+let mostCommonLanguage = mostFreqStr(languageArray)
+let mostCommonCurrency = mostFreqStr(currencyArray)
+
+// find the amount of times English shows up in languagearray
+// function englishCount(array) {
+// counter = 0
+// array.forEach(lang => {
+//   if (lang === "English" ) {
+//     counter ++;
+//   }
+//
+// })
+// return counter
+// }
+
+// amount of times Euro shows up in currencyArray
+function euroCount(array) {
+counter = 0
+array.forEach(lang => {
+  if (lang === "Euro" ) {
+    counter ++;
+  }
+
+})
+return counter
+}
+
+// how many countries speak that specific language
+function countryLangCount(array, language) {
+counter = 0
+array.forEach(lang => {
+  if (lang === language ) {
+    counter ++;
+  }
+
+})
+return counter
+}
+
+
+// let countryPopulation = Number(parseFloat(country["population"]).toFixed(2)).toLocaleString('en', {
+// minimumFractionDigits: 0
