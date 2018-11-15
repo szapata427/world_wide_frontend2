@@ -33,12 +33,19 @@ let infoWindow;
    //Opening info window
     //console.log(country["latlng"][0])
    //Added Marker?
+
+
+
    marker.addListener('mouseover', function(event) {
+     let countryPopulation = Number(parseFloat(country["population"]).toFixed(2)).toLocaleString('en', {
+      minimumFractionDigits: 0
+          });
+     
     if (infoWindow) infoWindow.close();
     infoWindow = new google.maps.InfoWindow({
      content: `<div class="country-info"><h4 class="country-title">${country["name"]}<h4>
           <p>Native Name: ${country["native_name"]}</p>
-          <p>Population: ${country["population"]}</p>
+          <p>Population: ${countryPopulation}</p>
           <p>Official Language: ${country["language"]}</p>
           <p>Capital: ${country["capital"]}</p>
           <p> Currency: ${country["currency_name"]} <span>${country["currency_symbol"]} </span> </p>
@@ -196,7 +203,3 @@ array.forEach(lang => {
 })
 return counter
 }
-
-
-// let countryPopulation = Number(parseFloat(country["population"]).toFixed(2)).toLocaleString('en', {
-// minimumFractionDigits: 0
