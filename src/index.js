@@ -55,7 +55,7 @@ let foundMarker;
           <p><span class="info-object">Capital:</span> <span class="info-style">${country["capital"]}</span></p>
           <p><span class="info-object">Currency:</span> <span class="info-style">${country["currency_name"]}</span></p>
           <p><span class="info-object">Currency Symbol:</span><span class="info-style">${country["currency_symbol"]}</span></p>
-          <a href="https://en.wikipedia.org/wiki/${country["native_name"]}"> More Info </a> <span><button data-id="${country["id"]}" id="like_btn" class="btn btn-primary"> Like </button></span>
+          <a href="https://en.wikipedia.org/wiki/${country["native_name"]}" target="_blank"> More Info </a> <span><button data-id="${country["id"]}" id="like_btn" class="btn btn-primary"> Like </button></span>
      </div>`
     })
     infoWindow.open(map, marker);
@@ -279,7 +279,7 @@ function repop(event){
            <p><span class="info-object">Capital:</span> <span class="info-style">${foundCountry["capital"]}</span></p>
            <p><span class="info-object">Currency:</span> <span class="info-style">${foundCountry["currency_name"]}</span></p>
            <p><span class="info-object">Currency Symbol:</span><span class="info-style">${foundCountry["currency_symbol"]}</span></p>
-           <a href="https://en.wikipedia.org/wiki/${foundCountry["native_name"]}"> More Info </a> <span><button data-id="${foundCountry["id"]}" id="like_btn" class="btn btn-primary"> Like </button></span>
+           <a href="https://en.wikipedia.org/wiki/${foundCountry["native_name"]}" target="_blank"> More Info </a> <span><button data-id="${foundCountry["id"]}" id="like_btn" class="btn btn-primary"> Like </button></span>
       </div>`
      })
      infoWindow.open(map, foundMarker);

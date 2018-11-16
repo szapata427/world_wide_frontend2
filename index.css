@@ -119,6 +119,22 @@ border-radius: 2px 2px 0 0;
 	border-radius: 2px 2px 10px 10px;
 } */
 
+
 .info-object {
   color: blue;
+  font-family: 'Karma', serif;
+  font-weight: 800px;
+}
+.country-title {
+  font-family: 'Michroma', sans-serif;
+  font-size: 20px;
+  color: red;
+  font-weight: 900px;
+  align: center;
+}
+.info-style {
+  font-family: 'Buenard', serif;
+  font-size: 18px;
+  font-color: rgb(152, 148, 135);
+  font-weight: 700px
 }
