@@ -40,7 +40,7 @@ let infoWindow;
      let countryPopulation = Number(parseFloat(country["population"]).toFixed(2)).toLocaleString('en', {
       minimumFractionDigits: 0
           });
-     
+
     if (infoWindow) infoWindow.close();
     infoWindow = new google.maps.InfoWindow({
      content: `<div class="country-info"><h4 class="country-title">${country["name"]}<h4>
@@ -59,10 +59,16 @@ let infoWindow;
     // countryInfo.className += "map-country-info";
    }
    )
+   //End of marker
   }
  )
 })
 }
+
+function repopMap() {
+    console.log("hellue")
+}
+
 //iterating through favorite_countries database and pushing the liked country_ids to the array
 let likedCountriesArray = []
 fetch(`http://localhost:3000/favorite_countries`).then(response => response.json())
