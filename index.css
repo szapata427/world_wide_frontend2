@@ -118,3 +118,7 @@ border-radius: 2px 2px 0 0;
 	border: 1px solid rgba(72, 181, 233, 0.6);
 	border-radius: 2px 2px 10px 10px;
 } */
+
+.info-object {
+  color: blue;
+}
