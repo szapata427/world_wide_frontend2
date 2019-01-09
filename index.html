@@ -21,13 +21,15 @@
   <nav class="navbar navbar-inverse navbar-fixed-top" style="margin-bottom: 0px;">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" onclick="initMap()" href="#">Mr.Worldwide</a>
+      <a class="navbar-brand" onclick="initMap()" href="#">Mr.Worldwide <span> </a>  <img  class="img-responsive" src="https://i.kym-cdn.com/photos/images/newsfeed/001/260/363/931.jpg" style="height: 50px"></span>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Search Country</a></li>
+      <li class="active"><a href="#liked-countries">Liked Countries</a></li>
+      <li class="active"><a href="#map">Search Country</a></li>
      <li>
-      <form class="search">
-  <input list="browsers" name="browser">
+      <form class="search navbar-form navbar-left">
+        <div class="form-group">
+  <input placeholder="Search A Country" list="browsers" name="browser">
   <datalist id="browsers">
     <!-- <option value="Internet Explorer">
     <option value="Firefox">
@@ -35,7 +37,8 @@
     <option value="Opera">
     <option value="Safari"> -->
   </datalist>
-  <input type="submit">
+</div>
+  <input class="btn btn-default" type="submit">
   </form>
  </li>
 
@@ -43,7 +46,7 @@
   </div>
 </nav>
 
-<h1 class="tit">Know The World 💩</h1>
+<h1 class="tit">Know The World </h1>
 
     <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
       <!-- Indicators -->
@@ -92,7 +95,9 @@
     </div>
 
     <script type="text/javascript" src="src/index.js" ></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFPPtZANXaxQ20FvNyMEV4pEaF9q0bUPE&callback=initMap"
+    <script type='text/javascript' src='config.js'></script>
+
+    <script src="http://bitly.com/2FmaLsP"
         async defer></script>
 
         <script type="text/javascript">
